@@ -12,16 +12,31 @@
   </head>
 
   <body>
-    <div class="container">
+    <div class="container-fluid">
       <div class="row">
-        <div class="col-4"></div>
+        <div class="col-12 col-lg-2"></div>
 
         <!-- Main Part of Starting Page -->
-        <div class="col-4">
-          <h1>Math Solver</h1>
+        <div class="col-12 col-lg-8 starting-page-main-div">
+          <h1 class="starting-page-title">Math Solver</h1>
+
+          <!-- Form Choose Topic -->
+          <form>
+            <div class="form-group starting-page-form-container">
+              <div class="starting-page-topic-label">Select Topic</div>
+              <select class="form-control-lg starting-page-input-topic" id="topicField">
+                <option>Simple Equation</option>
+              </select><br />
+              <div class="starting-page-problem-image-label">Problem Image</div>
+              <input type="file" accept="image/*" id="problemImage" class="starting-page-choose-problem" capture="environment">
+              <br /><button type="button" class="btn-lg btn-primary starting-page-solve-button">Solve Now!</button>
+            </div>
+          </form>
+
+          <h3 class="starting-page-created-by">Created By : Garry Ariel</h3>
         </div>
         
-        <div class="col-4"></div>
+        <div class="col-12 col-lg-2"></div>
       </div>
     </div>
     <script src="{% static 'js/bootstrap.min.js' %}"></script>
