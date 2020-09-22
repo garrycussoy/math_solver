@@ -1,4 +1,7 @@
-/* ---------- Starting Page ---------- */
+/* ---------------------------------------------------------------- */
+/* ----- Starting Page ----- */
+/* ---------------------------------------------------------------- */
+/* For small and medium size device */
 .starting-page-main-div {
   background-color: #ECECEC;
 }
@@ -50,4 +53,58 @@
   font-size: 35px;
   text-align: center;
   margin: 30px 0 120px 0;
+  font-weight: 700;
+}
+
+/* For large size device */
+@media (min-width: 992px) {  
+  .starting-page-title {
+    color: #142D4C;
+    font-size: 60px;
+    text-align: center;
+    margin: 50px 0 80px 0;
+  }
+  
+  .starting-page-form-container {
+    text-align: center;
+  }
+  
+  .starting-page-topic-label {
+    color: #385170;
+    font-size: 30px;
+    text-align: center;
+    margin: 0 0 20px 0;
+  }
+  
+  .starting-page-input-topic {
+    width: 50%;
+    color: #385170;
+    font-size: 20px;
+  }
+  
+  .starting-page-problem-image-label {
+    color: #385170;
+    font-size: 30px;
+    text-align: center;
+    margin: 50px 0 20px 0;
+  }
+  
+  .starting-page-choose-problem {
+    width: 250px;
+    color: #385170;
+    font-size: 20px;
+  }
+  
+  .starting-page-solve-button {
+    margin: 100px 0 50px 0;
+    font-size: 20px;
+  }
+  
+  .starting-page-created-by {
+    color: #142D4C;
+    font-size: 18px;
+    font-weight: 800;
+    text-align: center;
+    margin: 70px 0 60px 0;
+  }
 }
