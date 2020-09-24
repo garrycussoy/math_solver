@@ -7,5 +7,5 @@ from . import views
 app_name = 'math_solver_app'
 urlpatterns = [
     path('', views.index, name = 'index'),
-    # path('barang/<int:barang_id>', views.detail_barang, name='detail')
+    path('solution', views.get_problem, name = 'get_problem')
 ]
