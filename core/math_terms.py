@@ -3,7 +3,7 @@ This file contains functions needed to turn all features into a comprehensive ma
 """
 
 # Import variables needed from other modules
-from math_symbol import math_symbol
+from core.math_symbol import math_symbol
 
 """
 This function is designed to get position order of each feature.

@@ -6,23 +6,23 @@ import numpy as np
 import cv2
 
 # Import some tuning parameters
-from parameter import IMG_HEIGHT
-from parameter import IMG_WIDTH
-from parameter import BW_THRES
-from parameter import MASSIVE_FILTER_SIZE 
-from parameter import MIN_BLACK
-from parameter import FILTER_STEP
-from parameter import REMOVE_NOISE
-from parameter import NOISE_FILTER_SIZE
-from parameter import MAX_BLACK
-from parameter import NOISE_FILTER_STEP
-from parameter import DFS_RADIUS
-from parameter import BORDER_PADDING
-from parameter import FEATURE_THRES
-from parameter import BOR_BOUND
-from parameter import MODEL_HEIGHT
-from parameter import MODEL_WIDTH
-from parameter import ADD_PADDING
+from core.parameter import IMG_HEIGHT
+from core.parameter import IMG_WIDTH
+from core.parameter import BW_THRES
+from core.parameter import MASSIVE_FILTER_SIZE 
+from core.parameter import MIN_BLACK
+from core.parameter import FILTER_STEP
+from core.parameter import REMOVE_NOISE
+from core.parameter import NOISE_FILTER_SIZE
+from core.parameter import MAX_BLACK
+from core.parameter import NOISE_FILTER_STEP
+from core.parameter import DFS_RADIUS
+from core.parameter import BORDER_PADDING
+from core.parameter import FEATURE_THRES
+from core.parameter import BOR_BOUND
+from core.parameter import MODEL_HEIGHT
+from core.parameter import MODEL_WIDTH
+from core.parameter import ADD_PADDING
 
 """
 This function is designed to make the reshape the image into square one
@@ -427,7 +427,7 @@ def get_features_as_img(img, border_col):
     feature_img = cv2.resize(feature_img, (MODEL_HEIGHT, MODEL_WIDTH))
 
     # Save the image into features folder
-    cv2.imwrite('features/feature_' + str(index) + '.jpg', feature_img)
+    cv2.imwrite('core/features/feature_' + str(index) + '.jpg', feature_img)
     index += 1
 
     # Rescale the image
