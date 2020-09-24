@@ -26,7 +26,7 @@ def get_problem(request):
     problem_image = cv2.imread('core/images/problem.png')
 
     # Solve the problem
-    solve(problem_image, request.POST['topic_field'])
+    qna_dict = solve(problem_image, request.POST['topic_field'])
 
     # Render the view
-    return render(request, 'index.html')
+    return render(request, 'index.html', qna_dict)

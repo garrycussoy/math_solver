@@ -4,6 +4,7 @@ This file contains the main process.
 2. Feed feature into model
 3. Turn features into mathematical terms
 4. Evaluate the problem
+5. Return the result
 """
 
 # Import some packages needed
@@ -173,9 +174,9 @@ def solve(image, topic):
 
   """
   ------------------------------------------------------------
-  OPTIONAL. Display the Question and Answer in Terminal
+  STEP 5. Display the Question and Answer
   ------------------------------------------------------------
   """
-  if DISPLAY_QNA:
-    # Display the question and answer in terminal
-    display_qna(display_terms, result, topic)
+  # Display the question and answer in terminal
+  qna_dict = display_qna(display_terms, result, topic)
+  return qna_dict

@@ -2,6 +2,9 @@
 This file contains display methods for each topic given.
 """
 
+# Import parameter from other module
+from core.parameter import DISPLAY_QNA
+
 """
 Display question and answer of problem which fall into simple question topic.
 
@@ -17,11 +20,18 @@ def display_simple_equation(terms, answer):
   # Get the question in a string format
   question = " ".join(list(map(str, terms)))
 
-  # Display the question and answer
-  print("=========================================================================")
-  print("Question : " + question)
-  print("Answer   : " + str(answer))
-  print("=========================================================================")
+  # Display the question and answer in the terminal
+  if DISPLAY_QNA:
+    print("=========================================================================")
+    print("Question : " + question)
+    print("Answer   : " + str(answer))
+    print("=========================================================================")
+  
+  # Return the question and answer to be displayed in the apps
+  return {
+    'question': question,
+    'answer': str(answer)
+  }
 
 """
 Classifier of which method will be used for given terms and topic
@@ -33,4 +43,4 @@ Classifier of which method will be used for given terms and topic
 def display_qna(terms, answer, topic):
   # Classify by its topic
   if topic == "simple_equation":
-    display_simple_equation(terms, answer)
+    return display_simple_equation(terms, answer)

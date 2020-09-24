@@ -56,7 +56,7 @@ EPOCHS = 5
 DISPLAY_PREDICTED_FEATURES = True
 
 # ----------------------------------------------------------
-# 5. Display Question and Answer (Optional) in Terminal
+# 5. Display Question and Answer
 # ----------------------------------------------------------
 # Turn to true if you want to display the question and answer in the terminal
 DISPLAY_QNA = True
