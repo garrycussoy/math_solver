@@ -8,6 +8,7 @@ from io import BytesIO
 import numpy as np
 import cv2
 import base64
+import os
 
 # Import core modules
 from core.main import solve
@@ -24,9 +25,10 @@ def get_problem(request):
     problem_image = Image.open(BytesIO(base64.b64decode(problem_image)))
     problem_image.save('core/images/problem.png', 'PNG')
     problem_image = cv2.imread('core/images/problem.png')
+    os.remove('core/images/problem.png')
 
     # Solve the problem
     qna_dict = solve(problem_image, request.POST['topic_field'])
 
     # Render the view
-    return render(request, 'index.html', qna_dict)
+    return render(request, 'solution.html', qna_dict)
