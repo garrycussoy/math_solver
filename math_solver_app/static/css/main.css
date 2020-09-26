@@ -48,6 +48,14 @@
   font-size: 30px;
 }
 
+.starting-page-loading-message {
+  margin: 190px 0 310px 0;
+  color: #385170;
+  font-size: 30px;
+  font-weight: 600;
+  display: none;
+}
+
 .starting-page-created-by {
   color: #142D4C;
   font-size: 35px;
@@ -98,6 +106,14 @@
   .starting-page-solve-button {
     margin: 100px 0 50px 0;
     font-size: 20px;
+  }
+
+  .starting-page-loading-message {
+    margin: 120px 0 120px 0;
+    color: #385170;
+    font-size: 20px;
+    font-weight: 600;
+    display: none;
   }
   
   .starting-page-created-by {
