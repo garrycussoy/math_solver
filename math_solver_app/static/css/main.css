@@ -125,6 +125,43 @@
   }
 }
 
+/* Loading animation */
+.loading-point-1 {
+  opacity: 1;
+  animation: point-1-animation 1s infinite;
+}
+
+.loading-point-2 {
+  opacity: 1;
+  animation: point-2-animation 1s infinite;
+}
+
+.loading-point-3 {
+  opacity: 1;
+  animation: point-3-animation 1s infinite;
+}
+
+@keyframes point-1-animation {
+  0%   {opacity: 0;}
+  20%  {opacity: 0;}
+  25%  {opacity: 1;}
+  100% {opacity: 1;}
+}
+
+@keyframes point-2-animation {
+  0%   {opacity: 0;}
+  50%  {opacity: 0;}
+  55%  {opacity: 1;}
+  100% {opacity: 1;}
+}
+
+@keyframes point-3-animation {
+  0%   {opacity: 0;}
+  80%  {opacity: 0;}
+  85%  {opacity: 1;}
+  100% {opacity: 1;}
+}
+
 /* ---------------------------------------------------------------- */
 /* ----- Solution Page ----- */
 /* ---------------------------------------------------------------- */
