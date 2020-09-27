@@ -243,6 +243,39 @@
 /* ---------------------------------------------------------------- */
 /* ----- Error Page ----- */
 /* ---------------------------------------------------------------- */
+/* For small and medium size device */
+.error-page-main-container {
+  background-color: #ECECEC;
+  text-align: center;
+  padding: 250px 0 400px 0;
+}
+
+.error-page-oops-title {
+  color: #142D4C;
+  font-size: 45px;
+  font-weight: 700;
+  margin: 20px 0 20px 0;
+}
+
+.error-page-error-message {
+  color: #142D4C;
+  font-size: 30px;
+  font-weight: 600;
+  margin-bottom: 70px;
+  padding: 0 10%;
+  min-height: 120px;
+}
+
+.error-page-symbol {
+  width: 25%;
+  margin-bottom: 250px;
+}
+
+.error-page-back-button {
+  margin-bottom: 30px;
+  font-size: 20px;
+}
+
 /* For large size device */
 @media (min-width: 992px) {
   .error-page-main-container {
