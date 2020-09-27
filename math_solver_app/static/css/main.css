@@ -172,28 +172,28 @@
 }
 
 .solution-page-question-title {
-  color: #142D4C;
+  color: #385170;
   font-size: 60px;
   font-weight: 800;
   margin: 350px 0 30px 0;
 }
 
 .solution-page-question-content {
-  color: #142D4C;
+  color: #385170;
   font-size: 45px;
   font-weight: 600;
   margin: 20px 0 0px 0;
 }
 
 .solution-page-answer-title {
-  color: #142D4C;
+  color: #385170;
   font-size: 60px;
   font-weight: 800;
   margin: 120px 0 30px 0;
 }
 
 .solution-page-answer-content {
-  color: #142D4C;
+  color: #385170;
   font-size: 45px;
   font-weight: 600;
   margin: 20px 0 80px 0;
@@ -207,28 +207,28 @@
 /* For large size device */
 @media (min-width: 992px) {  
   .solution-page-question-title {
-    color: #142D4C;
+    color: #385170;
     font-size: 45px;
     font-weight: 650;
     margin: 160px 0 10px 0;
   }
   
   .solution-page-question-content {
-    color: #142D4C;
+    color: #385170;
     font-size: 35px;
     font-weight: 600;
     margin: 20px 0 0px 0;
   }
   
   .solution-page-answer-title {
-    color: #142D4C;
+    color: #385170;
     font-size: 45px;
     font-weight: 650;
     margin: 80px 0 10px 0;
   }
   
   .solution-page-answer-content {
-    color: #142D4C;
+    color: #385170;
     font-size: 35px;
     font-weight: 600;
     margin: 20px 0 50px 0;
@@ -236,6 +236,77 @@
   
   .solution-page-back-button {
     margin: 80px 0 150px 0;
+    font-size: 20px;
+  }
+}
+
+/* ---------------------------------------------------------------- */
+/* ----- Error Page ----- */
+/* ---------------------------------------------------------------- */
+/* For small and medium size device */
+.error-page-main-container {
+  background-color: #ECECEC;
+  text-align: center;
+  padding: 250px 0 400px 0;
+}
+
+.error-page-oops-title {
+  color: #142D4C;
+  font-size: 45px;
+  font-weight: 700;
+  margin: 20px 0 20px 0;
+}
+
+.error-page-error-message {
+  color: #142D4C;
+  font-size: 30px;
+  font-weight: 600;
+  margin-bottom: 70px;
+  padding: 0 10%;
+  min-height: 120px;
+}
+
+.error-page-symbol {
+  width: 25%;
+  margin-bottom: 250px;
+}
+
+.error-page-back-button {
+  margin-bottom: 30px;
+  font-size: 20px;
+}
+
+/* For large size device */
+@media (min-width: 992px) {
+  .error-page-main-container {
+    background-color: #ECECEC;
+    text-align: center;
+    padding: 100px 0;
+  }
+  
+  .error-page-oops-title {
+    color: #142D4C;
+    font-size: 70px;
+    font-weight: 700;
+    margin: 20px 0 20px 0;
+  }
+  
+  .error-page-error-message {
+    color: #142D4C;
+    font-size: 40px;
+    font-weight: 600;
+    margin-bottom: 20px;
+    padding: 0 10%;
+    min-height: 120px;
+  }
+  
+  .error-page-symbol {
+    width: 15%;
+    margin-bottom: 130px;
+  }
+  
+  .error-page-back-button {
+    margin-bottom: 30px;
     font-size: 20px;
   }
 }

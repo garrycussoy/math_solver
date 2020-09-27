@@ -20,15 +20,33 @@ def index(request):
 # Following function will handle the logic when user submit the problem through form
 def get_problem(request):
     # Get the image and turn it into numpy array format
-    problem_image = request.FILES['problem_image'].read()
-    problem_image = base64.b64encode(problem_image)
-    problem_image = Image.open(BytesIO(base64.b64decode(problem_image)))
-    problem_image.save('core/images/problem.png', 'PNG')
-    problem_image = cv2.imread('core/images/problem.png')
-    os.remove('core/images/problem.png')
+    try:
+        problem_image = request.FILES['problem_image'].read()
+        problem_image = base64.b64encode(problem_image)
+        problem_image = Image.open(BytesIO(base64.b64decode(problem_image)))
+        problem_image.save('core/images/problem.png', 'PNG')
+        problem_image = cv2.imread('core/images/problem.png')
+        os.remove('core/images/problem.png')
+    except:
+        # Prepare error message
+        message = {
+            'message': 'No Image Uploaded or File Not Supported'
+        }
+
+        # Render error page
+        return render(request, 'error.html', message)
 
     # Solve the problem
-    qna_dict = solve(problem_image, request.POST['topic_field'])
+    try:
+        qna_dict = solve(problem_image, request.POST['topic_field'])
+    except:
+        # Prepare error message
+        message = {
+            'message': 'There Is An Error Occured While Solving The Problem'
+        }
+
+        # Render error page
+        return render(request, 'error.html', message)
 
     # Render the view
     return render(request, 'solution.html', qna_dict)
