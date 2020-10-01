@@ -21,7 +21,7 @@
           <h1 class="starting-page-title">Math Solver</h1>
 
           <!-- Form Choose Topic -->
-          <form method="POST" action="{% url 'math_solver_app:upload_image' %}" enctype="multipart/form-data">
+          <form method="POST" action="{% url 'math_solver_app:get_problem' %}" enctype="multipart/form-data">
             {% csrf_token %}
             <div class="form-group starting-page-form-container">
               <div class="starting-page-topic-label">Select Topic</div>
@@ -32,7 +32,7 @@
               <input type="file" accept="image/*" name="problem_image" class="starting-page-choose-problem" capture="environment">
               <br /><button id="solveNowButton" onclick="loadingMessage()" type="submit" class="btn-lg btn-primary starting-page-solve-button">Solve Now!</button>
               <div id="loadingMessage" class="starting-page-loading-message">
-                Uploading Image, Please Wait 
+                Please Wait 
                 <span class="loading-point-1">.</span>
                 <span class="loading-point-2">.</span>
                 <span class="loading-point-3">.</span>
@@ -58,6 +58,11 @@
         // Display loading message
         document.getElementById('loadingMessage').style.display = "block";
       }
+
+      // window.onload = function() {
+      //     var submitBtn = document.getElementById('solveNowButton');
+      //     submitBtn.click();
+      // };
     </script>
 
   </body>

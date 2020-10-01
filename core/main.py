@@ -1,12 +1,16 @@
 """
-This file contains the main process.
+This file contains the main process of the apps. Overall, the steps can be divided into five following processes.
 1. Feature selection
 2. Feed feature into model
 3. Turn features into mathematical terms
 4. Evaluate the problem
 5. Return the result
+Those steps fall intwo two functions: "Extract Problem" and "Solve Problem" functions.
 """
 
+# ==============================================================================================
+# PREPARATION
+# ==============================================================================================
 # Import some packages needed
 from tensorflow.keras.models import load_model
 import numpy as np
@@ -57,13 +61,16 @@ from core.parameter import MODEL_ARCHITECTURE
 from core.parameter import DISPLAY_PREDICTED_FEATURES
 from core.parameter import DISPLAY_QNA
 
+# ==============================================================================================
+# EXTRACT PROBLEM
+# ==============================================================================================
 """
-Following function is the main function to get the problem image, process it, and generate the solution.
+Following function is designed to get the problem image, preprocess it, and detect the features.
 
 :param numpy-array image: The problem image that will be processed
-:param string topic: Topic of the problem
+:return dictionary features: The features extracted from the image
 """
-def solve(image, topic):
+def extract_problem(image):
   """
   ------------------------------------------------------------
   STEP 1. Feature Selection
@@ -150,6 +157,21 @@ def solve(image, topic):
     print(features_pred)
     print("--------------------------------------------------------------")
 
+  # Return the features
+  return features
+
+# ==============================================================================================
+# SOLVE PROBLEM
+# ==============================================================================================
+"""
+Following function is designed to take the features extracted from previous step, turn it into mathematical
+terms, then evaluate the result.
+
+:param dictionary features: The features extracted from previous step
+:param string topic: Topic of the problem
+:return dictionary qna_dict: Contains the problem and its solution
+"""
+def solve_problem(features, topic):
   """
   ------------------------------------------------------------
   STEP 3. Turn Features Into Mathematical Terms

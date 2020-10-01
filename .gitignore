@@ -212,3 +212,4 @@ core/train_set/
 core/notes/
 core/features/
 core/model/
+math_solver_app/static/problem/

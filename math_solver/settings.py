@@ -26,7 +26,7 @@ DEBUG = True
 
 ALLOWED_HOSTS = [
     '127.0.0.1',
-    'a1528d658b48.ngrok.io',
+    'f732bd92e1d3.ngrok.io',
     'math-solver-app.herokuapp.com'
 ]
 
