@@ -31,6 +31,15 @@
           </div>
           <h1 class="problem-detect-page-message-1">Now Scanning The Problem</h1>
           <h1 class="problem-detect-page-message-2">Please Wait</h1>
+
+          <!-- Hidden element to trigger next loading screen  -->
+          <form method="POST" action="{% url 'math_solver_app:extract_problem' %}">
+            {% csrf_token %}
+            <input type="text" name="file_name" value="{{ file_name }}" class="problem-detect-page-hidden-input" />
+            <input type="text" name="topic_field" value="{{ topic_field }}" class="problem-detect-page-hidden-input" />
+            <br /><button id="nextScreenButton" type="submit" class="btn-lg btn-primary problem-detect-page-hidden-button"></button>
+          </form>
+
         </div>
         
         <div class="col-12 col-lg-2"></div>
@@ -39,6 +48,16 @@
 
     <!-- Javascript Code -->
     <script src="{% static 'js/bootstrap.min.js' %}"></script>
+    <script>
+      // Trigger next loading screen event when the page has been loaded
+      window.onload = function() {
+          // Get activation button
+          var submitBtn = document.getElementById('nextScreenButton');
+
+          // Click on the button
+          submitBtn.click();
+      };
+    </script>
 
   </body>
 </html>

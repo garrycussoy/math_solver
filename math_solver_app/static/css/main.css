@@ -270,6 +270,11 @@
   100%  {top: 0%;}
 }
 
+/* Trigger next loading screen */
+.problem-detect-page-hidden-input, .problem-detect-page-hidden-button {
+  display: none;
+}
+
 /* ---------------------------------------------------------------- */
 /* ----- Solution Page ----- */
 /* ---------------------------------------------------------------- */

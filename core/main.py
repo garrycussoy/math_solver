@@ -5,7 +5,7 @@ This file contains the main process of the apps. Overall, the steps can be divid
 3. Turn features into mathematical terms
 4. Evaluate the problem
 5. Return the result
-Those steps fall intwo two functions: "Extract Problem" and "Solve Problem" functions.
+Those steps fall intwo two functions: "Get Problem" and "Solve Problem" functions.
 """
 
 # ==============================================================================================
@@ -62,7 +62,7 @@ from core.parameter import DISPLAY_PREDICTED_FEATURES
 from core.parameter import DISPLAY_QNA
 
 # ==============================================================================================
-# EXTRACT PROBLEM
+# GET PROBLEM
 # ==============================================================================================
 """
 Following function is designed to get the problem image, preprocess it, and detect the features.
@@ -70,7 +70,7 @@ Following function is designed to get the problem image, preprocess it, and dete
 :param numpy-array image: The problem image that will be processed
 :return dictionary features: The features extracted from the image
 """
-def extract_problem(image):
+def get_problem(image):
   """
   ------------------------------------------------------------
   STEP 1. Feature Selection
@@ -147,7 +147,7 @@ def extract_problem(image):
 
   # Assign the predicted value to each component
   for index in range(len(features)):
-    features[index]["symbol_id"] = features_pred[index]
+    features[index]["symbol_id"] = features_pred[index].item()
     features[index]["symbol"] = math_symbol[features_pred[index]]["symbol"]
 
   # Display predicted features from model in terminal

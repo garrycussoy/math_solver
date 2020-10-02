@@ -11,9 +11,10 @@ import base64
 import os
 import random
 import string
+import json
 
 # Import core modules
-from core.main import extract_problem
+from core.main import get_problem
 from core.main import solve_problem
 
 # Following function will render main page of the apps
@@ -65,14 +66,20 @@ def extract_problem(request):
         os.remove('math_solver_app/static/problem/' + file_name)
 
         # Get the features
-        features = extract_problem(problem_image)
+        features = get_problem(problem_image)
+
+        # Save the features into json file
+        file_name = file_name[:-4] + '.json'
+        file_path = 'math_solver_app/static/features/' + file_name
+        with open(file_path, 'w+') as features_file:
+            json.dump(features, features_file, indent = 4)
 
         # Render solving problem loading page
         container = {
-            'features': features,
+            'file_path': file_path,
             'topic': topic
         }
-        return render(request, 'solution.html', container)
+        return render(request, 'solvingProblemLoading.html', container)
     except:
         # Prepare error message
         message = {
