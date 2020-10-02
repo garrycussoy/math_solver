@@ -123,10 +123,6 @@ def get_problem(image):
     cv2.imshow("Bordered Features Image", ori_reshape)
     cv2.waitKey(0)
 
-  # Get all features as an image
-  feature_col = get_features_as_img(image, features)
-  feature_col = np.array(feature_col)
-
   """
   ------------------------------------------------------------
   STEP 2. Predict the Feature
@@ -134,6 +130,10 @@ def get_problem(image):
   2. Get predicted value for each feature
   ------------------------------------------------------------
   """
+  # Get all features as an image
+  feature_col = get_features_as_img(image, features)
+  feature_col = np.array(feature_col)
+
   # Load the model
   model = load_model("core/model/" + MODEL_ARCHITECTURE)
 

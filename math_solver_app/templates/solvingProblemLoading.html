@@ -24,7 +24,7 @@
           <h1 class="solve-problem-page-message-2">Please Wait</h1>
 
           <!-- Hidden element to trigger next loading screen  -->
-          <form method="POST" action="{% url 'math_solver_app:solve_problem' %}">
+          <form method="POST" action="{% url 'math_solver_app:solve' %}">
             {% csrf_token %}
             <input type="text" name="file_path" value="{{ file_path }}" class="solve-problem-page-hidden-input" />
             <input type="text" name="topic" value="{{ topic }}" class="solve-problem-page-hidden-input" />

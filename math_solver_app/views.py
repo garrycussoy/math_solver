@@ -90,7 +90,7 @@ def extract_problem(request):
         return render(request, 'error.html', message)
 
 # This third function will solve the problem and return the result back to the user
-def solve_problem(request):
+def solve(request):
     try:
         # Get file path and topic
         file_path = request.POST['file_path']
