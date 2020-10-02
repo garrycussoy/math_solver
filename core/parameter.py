@@ -48,15 +48,15 @@ MODEL_WIDTH = 35
 MODEL_ARCHITECTURE = 'cnn_model_1.hdf5'
 
 # Some parameters related to model training process
-SAVE_TO = 'model/cnn_model_2.hdf5'
+SAVE_TO = 'core/model/cnn_model_2.hdf5'
 BATCH_SIZE = 32
 EPOCHS = 5
 
-# Set to true if you want to display predicted features from model
+# Set to true if you want to display predicted features from model in terminal
 DISPLAY_PREDICTED_FEATURES = True
 
 # ----------------------------------------------------------
-# 5. Display Question and Answer (Optional)
+# 5. Display Question and Answer
 # ----------------------------------------------------------
 # Turn to true if you want to display the question and answer in the terminal
 DISPLAY_QNA = True

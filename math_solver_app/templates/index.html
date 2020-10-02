@@ -12,18 +12,53 @@
   </head>
 
   <body>
-    <div class="container">
+    <div class="container-fluid">
       <div class="row">
-        <div class="col-4"></div>
+        <div class="col-12 col-lg-2"></div>
 
         <!-- Main Part of Starting Page -->
-        <div class="col-4">
-          <h1>Math Solver</h1>
+        <div class="col-12 col-lg-8 starting-page-main-div">
+          <h1 class="starting-page-title">Math Solver</h1>
+
+          <!-- Form Choose Topic -->
+          <form method="POST" action="{% url 'math_solver_app:upload_image' %}" enctype="multipart/form-data">
+            {% csrf_token %}
+            <div class="form-group starting-page-form-container">
+              <div class="starting-page-topic-label">Select Topic</div>
+              <select class="form-control-lg starting-page-input-topic" name="topic_field">
+                <option value="simple_equation">Simple Equation</option>
+              </select><br />
+              <div class="starting-page-problem-image-label">Problem Image</div>
+              <input type="file" accept="image/*" name="problem_image" class="starting-page-choose-problem" capture="environment">
+              <br /><button id="solveNowButton" onclick="loadingMessage()" type="submit" class="btn-lg btn-primary starting-page-solve-button">Solve Now!</button>
+              <div id="loadingMessage" class="starting-page-loading-message">
+                Uploading Image, Please Wait 
+                <span class="loading-point-1">.</span>
+                <span class="loading-point-2">.</span>
+                <span class="loading-point-3">.</span>
+              </div>
+            </div>
+          </form>
+
+          <h3 class="starting-page-created-by">Created By : Garry Ariel</h3>
         </div>
         
-        <div class="col-4"></div>
+        <div class="col-12 col-lg-2"></div>
       </div>
     </div>
+
+    <!-- Javascript Code -->
     <script src="{% static 'js/bootstrap.min.js' %}"></script>
+    <script>
+      // Following function will activate loading message when user click on Solve Now button
+      loadingMessage = () => {
+        // Remove Solve Now button
+        document.getElementById('solveNowButton').style.display = "none";
+
+        // Display loading message
+        document.getElementById('loadingMessage').style.display = "block";
+      }
+    </script>
+
   </body>
 </html>

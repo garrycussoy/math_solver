@@ -1,0 +1,495 @@
+/* ---------------------------------------------------------------- */
+/* ----- Starting Page ----- */
+/* ---------------------------------------------------------------- */
+/* For small and medium size device */
+.starting-page-main-div {
+  background-color: #ECECEC;
+}
+
+.starting-page-title {
+  color: #142D4C;
+  font-size: 80px;
+  text-align: center;
+  margin: 150px 0 200px 0;
+}
+
+.starting-page-form-container {
+  text-align: center;
+}
+
+.starting-page-topic-label {
+  color: #385170;
+  font-size: 45px;
+  text-align: center;
+  margin: 0 0 20px 0;
+}
+
+.starting-page-input-topic {
+  width: 50%;
+  color: #385170;
+  font-size: 30px;
+}
+
+.starting-page-problem-image-label {
+  color: #385170;
+  font-size: 45px;
+  text-align: center;
+  margin: 80px 0 20px 0;
+}
+
+.starting-page-choose-problem {
+  width: 38%;
+  color: #385170;
+  font-size: 30px;
+}
+
+.starting-page-solve-button {
+  margin: 150px 0 300px 0;
+  font-size: 30px;
+}
+
+.starting-page-loading-message {
+  margin: 190px 0 310px 0;
+  color: #385170;
+  font-size: 30px;
+  font-weight: 600;
+  display: none;
+}
+
+.starting-page-created-by {
+  color: #142D4C;
+  font-size: 35px;
+  text-align: center;
+  margin: 30px 0 120px 0;
+  font-weight: 700;
+}
+
+/* For large size device */
+@media (min-width: 992px) {  
+  .starting-page-title {
+    color: #142D4C;
+    font-size: 60px;
+    text-align: center;
+    margin: 50px 0 80px 0;
+  }
+  
+  .starting-page-form-container {
+    text-align: center;
+  }
+  
+  .starting-page-topic-label {
+    color: #385170;
+    font-size: 30px;
+    text-align: center;
+    margin: 0 0 20px 0;
+  }
+  
+  .starting-page-input-topic {
+    width: 50%;
+    color: #385170;
+    font-size: 20px;
+  }
+  
+  .starting-page-problem-image-label {
+    color: #385170;
+    font-size: 30px;
+    text-align: center;
+    margin: 50px 0 20px 0;
+  }
+  
+  .starting-page-choose-problem {
+    width: 250px;
+    color: #385170;
+    font-size: 20px;
+  }
+  
+  .starting-page-solve-button {
+    margin: 100px 0 50px 0;
+    font-size: 20px;
+  }
+
+  .starting-page-loading-message {
+    margin: 120px 0 120px 0;
+    color: #385170;
+    font-size: 20px;
+    font-weight: 600;
+    display: none;
+  }
+  
+  .starting-page-created-by {
+    color: #142D4C;
+    font-size: 18px;
+    font-weight: 800;
+    text-align: center;
+    margin: 70px 0 60px 0;
+  }
+}
+
+/* Loading animation */
+.loading-point-1 {
+  opacity: 1;
+  animation: point-1-animation 1s infinite;
+}
+
+.loading-point-2 {
+  opacity: 1;
+  animation: point-2-animation 1s infinite;
+}
+
+.loading-point-3 {
+  opacity: 1;
+  animation: point-3-animation 1s infinite;
+}
+
+@keyframes point-1-animation {
+  0%   {opacity: 0;}
+  20%  {opacity: 0;}
+  25%  {opacity: 1;}
+  100% {opacity: 1;}
+}
+
+@keyframes point-2-animation {
+  0%   {opacity: 0;}
+  50%  {opacity: 0;}
+  55%  {opacity: 1;}
+  100% {opacity: 1;}
+}
+
+@keyframes point-3-animation {
+  0%   {opacity: 0;}
+  80%  {opacity: 0;}
+  85%  {opacity: 1;}
+  100% {opacity: 1;}
+}
+
+/* ---------------------------------------------------------------- */
+/* ----- Problem Detection Loading Page ----- */
+/* ---------------------------------------------------------------- */
+/* For small and medium size device */
+.problem-detect-page-main-div {
+  background-color: #ECECEC;
+  color: #385170;
+  text-align: center;
+  min-height: 1525px;
+}
+
+.problem-detect-page-title {
+  margin: 220px 0 150px 0;
+  font-size: 60px;
+  font-weight: 600;
+}
+
+.problem-detect-page-problem-image-container {
+  margin-bottom: 130px;
+  border: 15px solid #142D4C;
+  border-radius: 20px;
+  padding: 0;
+  position: relative;
+}
+
+.problem-detect-page-problem-image {
+  width: 100%;
+  opacity: 80%;
+}
+
+.problem-detect-page-scanner {
+  border: 4px solid rgba(0, 0, 0, 0.6);
+  position: absolute;
+  top: 0%;
+  width: 100%;
+  animation: scanning-animation 3.5s infinite;
+  animation-timing-function: linear;
+}
+
+.problem-detect-page-message-1 {
+  margin-bottom: 60px;
+  font-size: 50px;
+  font-weight: 600;
+}
+
+.problem-detect-page-message-2 {
+  margin-bottom: 300px;
+  font-size: 50px;
+  font-weight: 500;
+}
+
+/* For large size device */
+@media (min-width: 992px) {
+  .problem-detect-page-main-div {
+    background-color: #ECECEC;
+    color: #385170;
+    text-align: center;
+    min-height: 820px;
+  }
+  
+  .problem-detect-page-title {
+    margin: 100px 0 50px 0;
+    font-size: 40px;
+    font-weight: 600;
+  }
+  
+  .problem-detect-page-problem-image-container {
+    margin-bottom: 50px;
+    border: 20px solid #142D4C;
+    border-radius: 30px;
+    padding: 0;
+    position: relative;
+  }
+  
+  .problem-detect-page-problem-image {
+    width: 100%;
+    opacity: 80%;
+  }
+  
+  .problem-detect-page-scanner {
+    border: 4px solid rgba(0, 0, 0, 0.6);
+    position: absolute;
+    top: 0%;
+    width: 100%;
+    animation: scanning-animation 3.5s infinite;
+    animation-timing-function: linear;
+  }
+  
+  .problem-detect-page-message-1 {
+    margin-bottom: 30px;
+    font-size: 30px;
+    font-weight: 600;
+  }
+  
+  .problem-detect-page-message-2 {
+    margin-bottom: 60px;
+    font-size: 30px;
+    font-weight: 500;
+  }
+}
+
+/* Scanning animation */
+@keyframes scanning-animation {
+  0%    {top: 0%;}
+  20%   {top: 100%;}
+  100%  {top: 0%;}
+}
+
+/* Trigger next loading screen */
+.problem-detect-page-hidden-input, .problem-detect-page-hidden-button {
+  display: none;
+}
+
+/* ---------------------------------------------------------------- */
+/* ----- Solve Problem Loading Page ----- */
+/* ---------------------------------------------------------------- */
+/* For small and medium size device */
+.solve-problem-page-main-div {
+  background-color: #ECECEC;
+  color: #385170;
+  text-align: center;
+  min-height: 1525px;
+}
+
+.solve-problem-page-title {
+  margin: 220px 0 40px 0;
+  font-size: 60px;
+  font-weight: 600;
+}
+
+.solve-problem-page-loading {
+  width: 70%;
+}
+
+.solve-problem-page-message-1 {
+  margin-bottom: 60px;
+  font-size: 50px;
+  font-weight: 600;
+}
+
+.solve-problem-page-message-2 {
+  margin-bottom: 300px;
+  font-size: 50px;
+  font-weight: 500;
+}
+
+/* For large size device */
+@media (min-width: 992px) {
+  .solve-problem-page-main-div {
+    background-color: #ECECEC;
+    color: #385170;
+    text-align: center;
+    min-height: 820px;
+  }
+  
+  .solve-problem-page-title {
+    margin: 100px 0 0px 0;
+    font-size: 40px;
+    font-weight: 600;
+  }
+  
+  .solve-problem-page-loading {
+    width: 70%;
+  }
+  
+  .solve-problem-page-message-1 {
+    margin-bottom: 30px;
+    font-size: 30px;
+    font-weight: 600;
+  }
+  
+  .solve-problem-page-message-2 {
+    margin-bottom: 50px;
+    font-size: 30px;
+    font-weight: 500;
+  }
+}
+
+/* Trigger next screen */
+.solve-problem-page-hidden-input, .solve-problem-page-hidden-button {
+  display: none;
+}
+
+/* ---------------------------------------------------------------- */
+/* ----- Solution Page ----- */
+/* ---------------------------------------------------------------- */
+/* For small and medium size device */
+.solution-page-main-div {
+  background-color: #ECECEC;
+  text-align: center;
+}
+
+.solution-page-question-title {
+  color: #385170;
+  font-size: 60px;
+  font-weight: 800;
+  margin: 350px 0 30px 0;
+}
+
+.solution-page-question-content {
+  color: #385170;
+  font-size: 45px;
+  font-weight: 600;
+  margin: 20px 0 0px 0;
+}
+
+.solution-page-answer-title {
+  color: #385170;
+  font-size: 60px;
+  font-weight: 800;
+  margin: 120px 0 30px 0;
+}
+
+.solution-page-answer-content {
+  color: #385170;
+  font-size: 45px;
+  font-weight: 600;
+  margin: 20px 0 80px 0;
+}
+
+.solution-page-back-button {
+  margin: 185px 0 400px 0;
+  font-size: 25px;
+}
+
+/* For large size device */
+@media (min-width: 992px) {  
+  .solution-page-question-title {
+    color: #385170;
+    font-size: 45px;
+    font-weight: 650;
+    margin: 160px 0 10px 0;
+  }
+  
+  .solution-page-question-content {
+    color: #385170;
+    font-size: 35px;
+    font-weight: 600;
+    margin: 20px 0 0px 0;
+  }
+  
+  .solution-page-answer-title {
+    color: #385170;
+    font-size: 45px;
+    font-weight: 650;
+    margin: 80px 0 10px 0;
+  }
+  
+  .solution-page-answer-content {
+    color: #385170;
+    font-size: 35px;
+    font-weight: 600;
+    margin: 20px 0 50px 0;
+  }
+  
+  .solution-page-back-button {
+    margin: 80px 0 150px 0;
+    font-size: 20px;
+  }
+}
+
+/* ---------------------------------------------------------------- */
+/* ----- Error Page ----- */
+/* ---------------------------------------------------------------- */
+/* For small and medium size device */
+.error-page-main-container {
+  background-color: #ECECEC;
+  text-align: center;
+  padding: 250px 0 400px 0;
+}
+
+.error-page-oops-title {
+  color: #142D4C;
+  font-size: 45px;
+  font-weight: 700;
+  margin: 20px 0 20px 0;
+}
+
+.error-page-error-message {
+  color: #142D4C;
+  font-size: 30px;
+  font-weight: 600;
+  margin-bottom: 70px;
+  padding: 0 10%;
+  min-height: 120px;
+}
+
+.error-page-symbol {
+  width: 25%;
+  margin-bottom: 250px;
+}
+
+.error-page-back-button {
+  margin-bottom: 30px;
+  font-size: 20px;
+}
+
+/* For large size device */
+@media (min-width: 992px) {
+  .error-page-main-container {
+    background-color: #ECECEC;
+    text-align: center;
+    padding: 100px 0;
+  }
+  
+  .error-page-oops-title {
+    color: #142D4C;
+    font-size: 70px;
+    font-weight: 700;
+    margin: 20px 0 20px 0;
+  }
+  
+  .error-page-error-message {
+    color: #142D4C;
+    font-size: 40px;
+    font-weight: 600;
+    margin-bottom: 20px;
+    padding: 0 10%;
+    min-height: 120px;
+  }
+  
+  .error-page-symbol {
+    width: 15%;
+    margin-bottom: 130px;
+  }
+  
+  .error-page-back-button {
+    margin-bottom: 30px;
+    font-size: 20px;
+  }
+}
