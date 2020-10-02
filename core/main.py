@@ -1,12 +1,16 @@
 """
-This file contains the main process.
+This file contains the main process of the apps. Overall, the steps can be divided into five following processes.
 1. Feature selection
 2. Feed feature into model
 3. Turn features into mathematical terms
 4. Evaluate the problem
 5. Return the result
+Those steps fall intwo two functions: "Get Problem" and "Solve Problem" functions.
 """
 
+# ==============================================================================================
+# PREPARATION
+# ==============================================================================================
 # Import some packages needed
 from tensorflow.keras.models import load_model
 import numpy as np
@@ -57,13 +61,17 @@ from core.parameter import MODEL_ARCHITECTURE
 from core.parameter import DISPLAY_PREDICTED_FEATURES
 from core.parameter import DISPLAY_QNA
 
+# ==============================================================================================
+# GET PROBLEM
+# ==============================================================================================
 """
-Following function is the main function to get the problem image, process it, and generate the solution.
+Following function is designed to get the problem image, preprocess it, and detect the features.
 
 :param numpy-array image: The problem image that will be processed
-:param string topic: Topic of the problem
+:param string to_save: The path to save preprocessed image
+:return dictionary features: The features extracted from the image
 """
-def solve(image, topic):
+def get_problem(image, to_save):
   """
   ------------------------------------------------------------
   STEP 1. Feature Selection
@@ -115,11 +123,26 @@ def solve(image, topic):
     # Show bordered features
     cv2.imshow("Bordered Features Image", ori_reshape)
     cv2.waitKey(0)
+  
+  # Save processed image
+  cv2.imwrite(to_save, image)
 
-  # Get all features as an image
-  feature_col = get_features_as_img(image, features)
-  feature_col = np.array(feature_col)
+  # Return the features
+  return features
 
+# ==============================================================================================
+# SOLVE PROBLEM
+# ==============================================================================================
+"""
+Following function is designed to take the features extracted from previous step, turn it into mathematical
+terms, then evaluate the result.
+
+:param numpy-array image_name: Path of the image which has been processed in previous step
+:param dictionary features: The features extracted from previous step
+:param string topic: Topic of the problem
+:return dictionary qna_dict: Contains the problem and its solution
+"""
+def solve_problem(image_name, features, topic):
   """
   ------------------------------------------------------------
   STEP 2. Predict the Feature
@@ -127,6 +150,14 @@ def solve(image, topic):
   2. Get predicted value for each feature
   ------------------------------------------------------------
   """
+  # Get image
+  image = cv2.imread(image_name)
+  image = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY) # Turn to grayscale
+
+  # Get all features as an image
+  feature_col = get_features_as_img(image, features)
+  feature_col = np.array(feature_col)
+
   # Load the model
   model = load_model("core/model/" + MODEL_ARCHITECTURE)
 
@@ -140,7 +171,7 @@ def solve(image, topic):
 
   # Assign the predicted value to each component
   for index in range(len(features)):
-    features[index]["symbol_id"] = features_pred[index]
+    features[index]["symbol_id"] = features_pred[index].item()
     features[index]["symbol"] = math_symbol[features_pred[index]]["symbol"]
 
   # Display predicted features from model in terminal
@@ -149,7 +180,7 @@ def solve(image, topic):
     print("Predicted Features :")
     print(features_pred)
     print("--------------------------------------------------------------")
-
+  
   """
   ------------------------------------------------------------
   STEP 3. Turn Features Into Mathematical Terms
