@@ -66,7 +66,10 @@ def extract_problem(request):
         os.remove('math_solver_app/static/problem/' + file_name)
 
         # Get the features
-        features = get_problem(problem_image)
+        features = get_problem(problem_image, 'math_solver_app/static/problem/' + file_name)
+
+        # Save processed image name to be used later
+        image_name = 'math_solver_app/static/problem/' + file_name
 
         # Save the features into json file
         file_name = file_name[:-4] + '.json'
@@ -76,6 +79,7 @@ def extract_problem(request):
 
         # Render solving problem loading page
         container = {
+            'image_name': image_name,
             'file_path': file_path,
             'topic': topic
         }
@@ -92,23 +96,30 @@ def extract_problem(request):
 # This third function will solve the problem and return the result back to the user
 def solve(request):
     try:
-        # Get file path and topic
+        # Get file path, image name and topic
         file_path = request.POST['file_path']
+        image_name = request.POST['image_name']
         topic = request.POST['topic']
+
         # Get features which are stored in a json file
         features = None
         with open(file_path) as features_file:
             features = json.load(features_file)
-        
-        # Remove json file
-        os.remove(file_path)
 
         # Solve the problem
-        qna_dict = solve_problem(features, topic)
+        qna_dict = solve_problem(image_name, features, topic)
+
+        # Remove json file and the image
+        os.remove(image_name)
+        os.remove(file_path)
 
         # Render solution page
         return render(request, 'solution.html', qna_dict)
     except:
+        # Remove json file and the image
+        os.remove(image_name)
+        os.remove(file_path)
+
         # Prepare error message
         message = {
             'message': 'An Error Occured While Solving The Problem'
