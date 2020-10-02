@@ -92,9 +92,16 @@ def extract_problem(request):
 # This third function will solve the problem and return the result back to the user
 def solve_problem(request):
     try:
-        # Get features and topic
-        features = request.POST['features']
+        # Get file path and topic
+        file_path = request.POST['file_path']
         topic = request.POST['topic']
+        # Get features which are stored in a json file
+        features = None
+        with open(file_path) as features_file:
+            features = json.load(features_file)
+        
+        # Remove json file
+        os.remove(file_path)
 
         # Solve the problem
         qna_dict = solve_problem(features, topic)

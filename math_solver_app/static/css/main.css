@@ -276,6 +276,76 @@
 }
 
 /* ---------------------------------------------------------------- */
+/* ----- Solve Problem Loading Page ----- */
+/* ---------------------------------------------------------------- */
+/* For small and medium size device */
+.solve-problem-page-main-div {
+  background-color: #ECECEC;
+  color: #385170;
+  text-align: center;
+  min-height: 1525px;
+}
+
+.solve-problem-page-title {
+  margin: 220px 0 40px 0;
+  font-size: 60px;
+  font-weight: 600;
+}
+
+.solve-problem-page-loading {
+  width: 70%;
+}
+
+.solve-problem-page-message-1 {
+  margin-bottom: 60px;
+  font-size: 50px;
+  font-weight: 600;
+}
+
+.solve-problem-page-message-2 {
+  margin-bottom: 300px;
+  font-size: 50px;
+  font-weight: 500;
+}
+
+/* For large size device */
+@media (min-width: 992px) {
+  .solve-problem-page-main-div {
+    background-color: #ECECEC;
+    color: #385170;
+    text-align: center;
+    min-height: 820px;
+  }
+  
+  .solve-problem-page-title {
+    margin: 100px 0 0px 0;
+    font-size: 40px;
+    font-weight: 600;
+  }
+  
+  .solve-problem-page-loading {
+    width: 70%;
+  }
+  
+  .solve-problem-page-message-1 {
+    margin-bottom: 30px;
+    font-size: 30px;
+    font-weight: 600;
+  }
+  
+  .solve-problem-page-message-2 {
+    margin-bottom: 50px;
+    font-size: 30px;
+    font-weight: 500;
+  }
+}
+
+/* Trigger next screen */
+.solve-problem-page-hidden-input, .solve-problem-page-hidden-button {
+  display: none;
+}
+
+/* ---------------------------------------------------------------- */
 /* ----- Solution Page ----- */
 /* ---------------------------------------------------------------- */
 /* For small and medium size device */

@@ -16,9 +16,20 @@
       <div class="row">
         <div class="col-12 col-lg-2"></div>
 
-        <!-- Main Part of Starting Page -->
-        <div class="col-12 col-lg-8 starting-page-main-div">
-          <h3 class="starting-page-created-by">Created By : Garry Ariel</h3>
+        <!-- Main Part of Solving Problem Page -->
+        <div class="col-12 col-lg-8 solve-problem-page-main-div">
+          <h1 class="solve-problem-page-title">We Have Got Your Problem!</h1>
+          <img class="solve-problem-page-loading" src="{% static 'images/loading.gif' %}" alt="Solving Your Problem" />
+          <h1 class="solve-problem-page-message-1">Now Solving The Problem</h1>
+          <h1 class="solve-problem-page-message-2">Please Wait</h1>
+
+          <!-- Hidden element to trigger next loading screen  -->
+          <form method="POST" action="{% url 'math_solver_app:solve_problem' %}">
+            {% csrf_token %}
+            <input type="text" name="file_path" value="{{ file_path }}" class="solve-problem-page-hidden-input" />
+            <input type="text" name="topic" value="{{ topic }}" class="solve-problem-page-hidden-input" />
+            <br /><button id="nextScreenButton" type="submit" class="btn-lg btn-primary solve-problem-page-hidden-button"></button>
+          </form>
         </div>
         
         <div class="col-12 col-lg-2"></div>
@@ -27,6 +38,17 @@
 
     <!-- Javascript Code -->
     <script src="{% static 'js/bootstrap.min.js' %}"></script>
+
+    <script>
+      // Trigger next screen event when the page has been loaded
+      window.onload = function() {
+          // Get activation button
+          var submitBtn = document.getElementById('nextScreenButton');
+
+          // Click on the button
+          submitBtn.click();
+      };
+    </script>
 
   </body>
 </html>
