@@ -68,10 +68,10 @@ from core.parameter import DISPLAY_QNA
 Following function is designed to get the problem image, preprocess it, and detect the features.
 
 :param numpy-array image: The problem image that will be processed
-:param string to_save: The path to save preprocessed image
 :return dictionary features: The features extracted from the image
+:return numpy-array image: The processed image
 """
-def get_problem(image, to_save):
+def get_problem(image):
   """
   ------------------------------------------------------------
   STEP 1. Feature Selection
@@ -81,7 +81,6 @@ def get_problem(image, to_save):
   3. Remove massive black
   4. Remove noise (optional)
   5. Get all features information
-  6. Crop the features as collection of images to be feed into the model
   ------------------------------------------------------------
   """
   # Reshape the image into square-shaped
@@ -123,37 +122,31 @@ def get_problem(image, to_save):
     # Show bordered features
     cv2.imshow("Bordered Features Image", ori_reshape)
     cv2.waitKey(0)
-  
-  # Save processed image
-  cv2.imwrite(to_save, image)
 
-  # Return the features
-  return features
+  # Return the features and processed image
+  return (features, image)
 
 # ==============================================================================================
 # SOLVE PROBLEM
 # ==============================================================================================
 """
-Following function is designed to take the features extracted from previous step, turn it into mathematical
-terms, then evaluate the result.
+Following function is designed to take the features extracted from previous step (and also the processed image), 
+turn it into mathematical terms, then evaluate the result.
 
-:param numpy-array image_name: Path of the image which has been processed in previous step
+:param numpy-array image: The image that has been processed from previous step
 :param dictionary features: The features extracted from previous step
 :param string topic: Topic of the problem
 :return dictionary qna_dict: Contains the problem and its solution
 """
-def solve_problem(image_name, features, topic):
+def solve_problem(image, features, topic):
   """
   ------------------------------------------------------------
   STEP 2. Predict the Feature
-  1. Feed feature image to the model
-  2. Get predicted value for each feature
+  1. Crop the features as collection of images
+  2. Feed feature images to the model
+  3. Get predicted value for each feature
   ------------------------------------------------------------
   """
-  # Get image
-  image = cv2.imread(image_name)
-  image = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY) # Turn to grayscale
-
   # Get all features as an image
   feature_col = get_features_as_img(image, features)
   feature_col = np.array(feature_col)
@@ -208,6 +201,6 @@ def solve_problem(image_name, features, topic):
   STEP 5. Display the Question and Answer
   ------------------------------------------------------------
   """
-  # Display the question and answer in terminal
+  # Display the question and answer
   qna_dict = display_qna(display_terms, result, topic)
   return qna_dict

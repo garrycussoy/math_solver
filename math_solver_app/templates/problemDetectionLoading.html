@@ -23,7 +23,7 @@
             <div class="row">
               <div class="col-3"></div>
               <div class="problem-detect-page-problem-image-container col-6">
-                <img class="problem-detect-page-problem-image" src="{{ image_path }}" alt="Problem Image" />
+                <img class="problem-detect-page-problem-image" src="{{ image_url }}" alt="Problem Image" />
                 <div class="problem-detect-page-scanner"></div>
               </div>
               <div class="col-3"></div>
@@ -35,7 +35,7 @@
           <!-- Hidden element to trigger next loading screen  -->
           <form method="POST" action="{% url 'math_solver_app:extract_problem' %}">
             {% csrf_token %}
-            <input type="text" name="file_name" value="{{ file_name }}" class="problem-detect-page-hidden-input" />
+            <input type="text" name="image_name" value="{{ image_name }}" class="problem-detect-page-hidden-input" />
             <input type="text" name="topic_field" value="{{ topic_field }}" class="problem-detect-page-hidden-input" />
             <br /><button id="nextScreenButton" type="submit" class="btn-lg btn-primary problem-detect-page-hidden-button"></button>
           </form>
