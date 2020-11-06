@@ -4,7 +4,7 @@ This file contains all tuning parameter needed in the process
 # ----------------------------------------------------------
 # 1. Feature Selection
 # ----------------------------------------------------------
-# Size of the images (It is recommended to have square size)
+# Size of the images (The image must be in square shaped)
 IMG_HEIGHT = 300
 IMG_WIDTH = 300
 
@@ -36,6 +36,9 @@ BOR_BOUND = 8
 DISPLAY_BORDERED_FEATURES = False
 BORDER_PADDING = 0
 ADD_PADDING = 0
+
+# Save the feature images into a folder
+SAVE_FEATURES = False
 
 # Shape of feature images which will be fed into the model
 MODEL_HEIGHT = 35

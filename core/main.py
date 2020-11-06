@@ -14,6 +14,7 @@ Those steps fall intwo two functions: "Get Problem" and "Solve Problem" function
 # Import some packages needed
 from tensorflow.keras.models import load_model
 import numpy as np
+import math
 import cv2
 import argparse
 
@@ -84,7 +85,10 @@ def get_problem(image):
   ------------------------------------------------------------
   """
   # Reshape the image into square-shaped
-  image = reshape_square(image)
+  image, half, axis = reshape_square(image)
+
+  # Get the size of the image
+  size = image.shape[0]
 
   # Do some preprocessing
   image = cv2.resize(image, (IMG_HEIGHT, IMG_WIDTH)) # Resize the image
@@ -111,7 +115,9 @@ def get_problem(image):
     image = remove_noise(image, NOISE_FILTER_SIZE, NOISE_FILTER_STEP, MAX_BLACK)
 
   # Get all features information from the image
-  features = get_features(image)
+  ratio = size / IMG_HEIGHT
+  padding = math.floor(half * ratio)
+  features = get_features(image, padding, axis)
 
   # Draw border into each features in the original reshaped image
   if DISPLAY_BORDERED_FEATURES:

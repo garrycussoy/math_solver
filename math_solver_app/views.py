@@ -19,10 +19,6 @@ import urllib
 from core.main import get_problem
 from core.main import solve_problem
 
-# Following function will render main page of the apps
-def index(request):
-    return render(request, 'index.html')
-
 """
 Following function will create blob that connect to an image path in firebase
 """
@@ -34,6 +30,10 @@ def create_blob(file_path):
     blob = bucket.blob(file_path)
     return blob
 
+# Following function will render main page of the apps
+def index(request):
+    return render(request, 'index.html')
+
 """
 Following functions will handle the logic when user submit the problem through form
 """
@@ -44,6 +44,21 @@ def upload_image(request):
         problem_image = request.FILES['problem_image'].read()
         problem_image = base64.b64encode(problem_image)
         problem_image = Image.open(BytesIO(base64.b64decode(problem_image)))
+
+        # Get the size of inputted image
+        width, height = problem_image.size
+
+        # Resize inputted image
+        max_long = 300
+        new_width = 0
+        new_height = 0
+        if width > height:
+            new_width = max_long
+            new_height = (height * max_long) // width
+        else:
+            new_height = max_long
+            new_width = (width * max_long) // height
+        problem_image = problem_image.resize((new_width, new_height))
 
         # Save as byte array
         img_byte_arr = BytesIO()
@@ -119,7 +134,7 @@ def extract_problem(request):
         return render(request, 'solvingProblemLoading.html', container)
     except:
         # Remove original image from firebase
-        blob = create_blob('problem/' + original_image_name)
+        blob = create_blob('problem/' + image_name)
         blob.delete()
 
         # Prepare error message

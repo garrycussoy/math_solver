@@ -23,12 +23,15 @@ from core.parameter import BOR_BOUND
 from core.parameter import MODEL_HEIGHT
 from core.parameter import MODEL_WIDTH
 from core.parameter import ADD_PADDING
+from core.parameter import SAVE_FEATURES
 
 """
 This function is designed to make the reshape the image into square one
 
 :param numpy-array image: The image that will be reshaped
 :return image: Reshaped image
+:return half: The number of pixel added to each added side
+:return axis: The direction of added pixel
 """
 def reshape_square(image):
   # Set some variables
@@ -36,22 +39,25 @@ def reshape_square(image):
   sq_left = 0
   sq_right = 0
   sq_bottom = 0
+  axis = "horizontal"
 
   # Get the size of the image
   image_shape = image.shape
   img_height = image_shape[0]
   img_width = image_shape[1]
   diff = img_width - img_height
+  half = diff // 2
 
   # Case when width < height
   if diff < 0:
-    sq_left = (- diff) // 2
-    sq_right = (- diff) // 2
+    sq_left = (-1) * half
+    sq_right = (-1) * half
 
   # Case when width > height
   elif diff > 0:
-    sq_top = diff // 2
-    sq_bottom = diff // 2
+    sq_top = half
+    sq_bottom = half
+    axis = "vertical"
 
   # Add padding to the feature and resize it
   image = cv2.copyMakeBorder(
@@ -64,8 +70,8 @@ def reshape_square(image):
     value = (0, 0, 0)
   )
 
-  # Return the black and white image
-  return image
+  # Return the black and white image, the number of pixel added, and its direction
+  return (image, half, axis)
 
 """
 This function is designed to make the images only black (0) or white (255)
@@ -220,13 +226,27 @@ def is_pos(coor):
 This function is designed to get all the features from the image
 
 :param numpy-array img: The image which we want to extract its features
+:param integer padding: As a border to determine which part of the image is used in DFS
+:param string axis: The direction of padding
 :return component: Information about all features.
 """
-def get_features(img):
+def get_features(img, padding, axis):
+  # Define important part of the image (which will be used in DFS)
+  left_part = 0
+  right_part = IMG_WIDTH
+  top_part = 0
+  bottom_part = IMG_HEIGHT
+  if axis == "vertical":
+    top_part = padding
+    bottom_part = IMG_HEIGHT - padding
+  elif axis == "horizontal":
+    left_part = padding
+    right_part = IMG_WIDTH - padding
+
   # Create queue and define some variables needed
   q = []
-  for height in range(IMG_HEIGHT):
-    for width in range(IMG_WIDTH):
+  for height in range(top_part, bottom_part):
+    for width in range(left_part, right_part):
       q.append((height, width))
   done = []
   component = []
@@ -427,8 +447,9 @@ def get_features_as_img(img, border_col):
     feature_img = cv2.resize(feature_img, (MODEL_HEIGHT, MODEL_WIDTH))
 
     # Save the image into features folder
-    cv2.imwrite('core/features/feature_' + str(index) + '.jpg', feature_img)
-    index += 1
+    if SAVE_FEATURES:
+      cv2.imwrite('core/features/feature_' + str(index) + '.jpg', feature_img)
+      index += 1
 
     # Rescale the image
     feature_img = feature_img / 255.0
