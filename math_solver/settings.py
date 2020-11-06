@@ -11,6 +11,8 @@ https://docs.djangoproject.com/en/3.0/ref/settings/
 """
 
 import os
+from firebase_admin import credentials
+from firebase_admin import initialize_app
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -111,3 +113,7 @@ USE_TZ = True
 STATIC_ROOT = os.path.join(BASE_DIR, 'math_solver_app/static')
 STATIC_URL = '/static/'
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+
+# Initialize credential for firebase
+cred = credentials.Certificate("credential/credential_gcs.json")
+initialize_app(cred, {'storageBucket': 'math-solver-app.appspot.com'})
