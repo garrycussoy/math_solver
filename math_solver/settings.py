@@ -11,8 +11,12 @@ https://docs.djangoproject.com/en/3.0/ref/settings/
 """
 
 import os
+from dotenv import load_dotenv
 from firebase_admin import credentials
 from firebase_admin import initialize_app
+
+# Load .env file
+load_dotenv()
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -21,7 +25,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/3.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'w6c!n&albuxviphw#^g*0vyn!jax(#q%)*w0)3=&+d@st$11b#'
+SECRET_KEY = os.getenv("SECRET_KEY")
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -115,5 +119,5 @@ STATIC_URL = '/static/'
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 # Initialize credential for firebase
-cred = credentials.Certificate("credential/credential_gcs.json")
+cred = credentials.Certificate(os.getenv("FIREBASE_CRED_PATH"))
 initialize_app(cred, {'storageBucket': 'math-solver-app.appspot.com'})
