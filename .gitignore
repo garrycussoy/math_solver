@@ -213,4 +213,4 @@ core/notes/
 core/features/
 math_solver_app/static/problem/
 math_solver_app/static/features/
-credential/
+google-credentials.json

@@ -119,5 +119,5 @@ STATIC_URL = '/static/'
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 # Initialize credential for firebase
-cred = credentials.Certificate(os.getenv("FIREBASE_CRED_PATH"))
+cred = credentials.Certificate(os.getenv("GOOGLE_APPLICATION_CREDENTIALS"))
 initialize_app(cred, {'storageBucket': 'math-solver-app.appspot.com'})
