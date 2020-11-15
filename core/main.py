@@ -14,6 +14,7 @@ Those steps fall intwo two functions: "Get Problem" and "Solve Problem" function
 # Import some packages needed
 from tensorflow.keras.models import load_model
 import numpy as np
+import tensorflow as tf
 import math
 import cv2
 import argparse
@@ -157,12 +158,26 @@ def solve_problem(image, features, topic):
   feature_col = get_features_as_img(image, features)
   feature_col = np.array(feature_col)
 
-  # Load the model
-  model = load_model("core/model/" + MODEL_ARCHITECTURE)
+  # Formatting the input
+  feature_col = feature_col.reshape(feature_col.shape + (1,))
+  feature_col = feature_col.astype(np.float32)
+  input_shape = list(feature_col.shape)
 
-  # Predict the feature
-  feature_col = feature_col.reshape(feature_col.shape + (1,)) 
-  features_prob = model.predict(feature_col)
+  # Load the TFLite model and allocate tensors
+  interpreter = tf.lite.Interpreter(model_path = "core/model/" + MODEL_ARCHITECTURE)
+  interpreter.resize_tensor_input(0, input_shape, strict = True)
+  interpreter.allocate_tensors()
+
+  # Get input and output tensors
+  input_details = interpreter.get_input_details()
+  output_details = interpreter.get_output_details()
+
+  # Feed the data into the model
+  interpreter.set_tensor(input_details[0]['index'], feature_col)
+  interpreter.invoke()
+
+  # Get predicted value
+  features_prob = interpreter.get_tensor(output_details[0]['index'])
   features_pred = []
   for index in range(len(feature_col)):
     predicted_feat = np.argmax(features_prob[index])

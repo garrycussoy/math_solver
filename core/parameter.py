@@ -48,7 +48,7 @@ MODEL_WIDTH = 35
 # 2. Build and Train Model
 # ----------------------------------------------------------
 # If you want to use your own model, place it in model folder
-MODEL_ARCHITECTURE = 'cnn_model_1.hdf5'
+MODEL_ARCHITECTURE = 'cnn_model_1.tflite'
 
 # Some parameters related to model training process
 SAVE_TO = 'core/model/cnn_model_2.hdf5'

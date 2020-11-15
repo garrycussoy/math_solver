@@ -210,8 +210,8 @@ dmypy.json
 # ---------- Others ----------
 core/train_set/
 core/notes/
+core/images/
 core/features/
-core/model/
 math_solver_app/static/problem/
 math_solver_app/static/features/
-credential/
+google-credentials.json
