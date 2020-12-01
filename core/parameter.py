@@ -31,6 +31,10 @@ NOISE_FILTER_STEP = 5 # The default value is the same as MASSIVE_FILTER_SIZE
 DFS_RADIUS = 3
 FEATURE_THRES = 15
 BOR_BOUND = 8
+ROI_HOR_TOP_THRES = 290
+ROI_HOR_BOTTOM_THRES = 200
+ROI_VER_TOP_THRES = 297
+ROI_VER_BOTTOM_THRES = 200
 
 # Draw border of each feature and crop them as new image
 DISPLAY_BORDERED_FEATURES = False

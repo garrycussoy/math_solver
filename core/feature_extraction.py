@@ -20,6 +20,10 @@ from core.parameter import DFS_RADIUS
 from core.parameter import BORDER_PADDING
 from core.parameter import FEATURE_THRES
 from core.parameter import BOR_BOUND
+from core.parameter import ROI_HOR_TOP_THRES
+from core.parameter import ROI_HOR_BOTTOM_THRES
+from core.parameter import ROI_VER_TOP_THRES
+from core.parameter import ROI_VER_BOTTOM_THRES
 from core.parameter import MODEL_HEIGHT
 from core.parameter import MODEL_WIDTH
 from core.parameter import ADD_PADDING
@@ -231,7 +235,8 @@ This function is designed to get all the features from the image
 :return component: Information about all features.
 """
 def get_features(img, padding, axis):
-  # Define important part of the image (which will be used in DFS)
+  # ----- Define important part of the image (which will be used in DFS) -----
+  # Exclude padding
   left_part = 0
   right_part = IMG_WIDTH
   top_part = 0
@@ -242,6 +247,28 @@ def get_features(img, padding, axis):
   elif axis == "horizontal":
     left_part = padding
     right_part = IMG_WIDTH - padding
+  
+  # Focus on text region (horizontal)
+  horizontal_proj = img.sum(axis = 1) / 255.0
+  for row_sum in range(top_part + BOR_BOUND, bottom_part - BOR_BOUND):
+    if horizontal_proj[row_sum] <= ROI_HOR_TOP_THRES and horizontal_proj[row_sum] >= ROI_HOR_BOTTOM_THRES:
+      top_part = row_sum - BOR_BOUND
+      break
+  for row_sum in range(bottom_part - 1 - BOR_BOUND, top_part - 1 + BOR_BOUND, -1):
+    if horizontal_proj[row_sum] <= ROI_HOR_TOP_THRES and horizontal_proj[row_sum] >= ROI_HOR_BOTTOM_THRES:
+      bottom_part = row_sum + BOR_BOUND
+      break
+  
+  # Focus on text region (vertical)
+  vertical_proj = img.sum(axis = 0) / 255.0
+  for col_sum in range(left_part + BOR_BOUND, right_part - BOR_BOUND):
+    if vertical_proj[col_sum] <= ROI_VER_TOP_THRES and vertical_proj[col_sum] >= ROI_VER_BOTTOM_THRES:
+      left_part = col_sum - BOR_BOUND
+      break
+  for col_sum in range(right_part - 1 - BOR_BOUND, left_part - 1 + BOR_BOUND, -1):
+    if vertical_proj[col_sum] <= ROI_VER_TOP_THRES and vertical_proj[col_sum] >= ROI_VER_BOTTOM_THRES:
+      right_part = col_sum + BOR_BOUND
+      break
 
   # Create queue and define some variables needed
   q = []
