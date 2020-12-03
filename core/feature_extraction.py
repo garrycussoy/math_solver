@@ -121,12 +121,9 @@ def remove_massive_black(img, noise_filsize, filstep, minblack):
   # Loop through each pixel
   for row in range(up_most, bottom_most + 1, filstep):
     for col in range(left_most, right_most + 1, filstep):
-      # Loop for each pixel in noise filter square
-      black_pxl = 0
-      for row_fil in range(row - mid_point + 1, row + mid_point):
-        for col_fil in range(col - mid_point + 1, col + mid_point):
-          if img[row_fil, col_fil] == 0:
-            black_pxl += 1
+      # Calculate the number of black pixels in noise filter area
+      white_pxl = (img[row - mid_point + 1 : row + mid_point, col - mid_point + 1 : col + mid_point] / 255).sum()
+      black_pxl = (noise_filsize ** 2) - white_pxl
 
       # Turn all pixels in noise filter into white if the number of black pixels satisfy the condition given
       if black_pxl >= minblack:
