@@ -31,6 +31,10 @@ NOISE_FILTER_STEP = 5 # The default value is the same as MASSIVE_FILTER_SIZE
 DFS_RADIUS = 3
 FEATURE_THRES = 15
 BOR_BOUND = 8
+ROI_HOR_TOP_THRES = 290
+ROI_HOR_BOTTOM_THRES = 200
+ROI_VER_TOP_THRES = 297
+ROI_VER_BOTTOM_THRES = 200
 
 # Draw border of each feature and crop them as new image
 DISPLAY_BORDERED_FEATURES = False
@@ -59,7 +63,13 @@ EPOCHS = 5
 DISPLAY_PREDICTED_FEATURES = True
 
 # ----------------------------------------------------------
-# 5. Display Question and Answer
+# 3. Display Question and Answer
 # ----------------------------------------------------------
 # Turn to true if you want to display the question and answer in the terminal
 DISPLAY_QNA = True
+
+# ----------------------------------------------------------
+# 4. General
+# ----------------------------------------------------------
+# Set to true if you want to delete processed image saved in firebase
+DELETE_PROCESSED_IMAGE = True
