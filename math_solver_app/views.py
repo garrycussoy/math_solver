@@ -15,9 +15,12 @@ import string
 import json
 import urllib
 
-# Import core modules
+# Import core functions
 from core.main import get_problem
 from core.main import solve_problem
+
+# Import parameter
+from core.parameter import DELETE_PROCESSED_IMAGE
 
 """
 Following function will create blob that connect to an image path in firebase
@@ -168,8 +171,9 @@ def solve(request):
         # Remove the image (both original and processed image)
         blob = create_blob('problem/' + original_image_name)
         blob.delete()
-        blob = create_blob('problem/' + processed_image_name)
-        blob.delete()
+        if DELETE_PROCESSED_IMAGE:
+            blob = create_blob('problem/' + processed_image_name)
+            blob.delete()
 
         # Render solution page
         return render(request, 'solution.html', qna_dict)
@@ -177,8 +181,9 @@ def solve(request):
         # Remove the image (both original and processed image)
         blob = create_blob('problem/' + original_image_name)
         blob.delete()
-        blob = create_blob('problem/' + processed_image_name)
-        blob.delete()
+        if DELETE_PROCESSED_IMAGE:
+            blob = create_blob('problem/' + processed_image_name)
+            blob.delete()
 
         # Prepare error message
         message = {

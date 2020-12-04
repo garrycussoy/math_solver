@@ -63,7 +63,13 @@ EPOCHS = 5
 DISPLAY_PREDICTED_FEATURES = True
 
 # ----------------------------------------------------------
-# 5. Display Question and Answer
+# 3. Display Question and Answer
 # ----------------------------------------------------------
 # Turn to true if you want to display the question and answer in the terminal
 DISPLAY_QNA = True
+
+# ----------------------------------------------------------
+# 4. General
+# ----------------------------------------------------------
+# Set to true if you want to delete processed image saved in firebase
+DELETE_PROCESSED_IMAGE = True
