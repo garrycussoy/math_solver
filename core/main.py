@@ -25,7 +25,6 @@ from core.feature_extraction import black_or_white
 from core.feature_extraction import remove_massive_black
 from core.feature_extraction import remove_noise
 from core.feature_extraction import sharpen
-from core.feature_extraction import is_pos
 from core.feature_extraction import get_features
 from core.feature_extraction import draw_border
 from core.feature_extraction import get_features_as_img

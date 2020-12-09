@@ -216,10 +216,11 @@ def sharpen(img, sharpen_filsize, filstep, minblack):
 This function is designed to check whether a pointer is still in the image or not
 
 :param tuple coor: (x, y) coordinate of the pointer
+:param tuple border: (top, bottom, left, right) tuple of the border
 :return bool: True if the pointer inside the image, False otherwise
 """
-def is_pos(coor):
-  if (coor[0] < 0 or coor[1] < 0) or (coor[0] >= IMG_WIDTH or coor[1] >= IMG_HEIGHT):
+def is_inside_image(coor, border):
+  if (coor[0] < border[0] or coor[1] < border[2]) or (coor[0] >= border[1] or coor[1] >= border[3]):
     return False
   return True
 
@@ -269,6 +270,7 @@ def get_features(img, padding, axis):
 
   # Create queue and define some variables needed
   q = []
+  border_tuple = (top_part, bottom_part, left_part, right_part)
   for height in range(top_part, bottom_part):
     for width in range(left_part, right_part):
       q.append((height, width))
@@ -305,7 +307,7 @@ def get_features(img, padding, axis):
             continue
 
           cell = (first_el[0] + x_ind, first_el[1] + y_ind)
-          if is_pos(cell) and img[cell[0], cell[1]] == 0 and cell not in done:
+          if is_inside_image(cell, border_tuple) and img[cell[0], cell[1]] == 0 and cell not in done:
             qn.append(cell)
             area += 1
 
@@ -335,7 +337,7 @@ def get_features(img, padding, axis):
               continue
 
             cell = (first_el[0] + x_ind, first_el[1] + y_ind)
-            if is_pos(cell) and img[cell[0], cell[1]] == 0 and cell not in done and cell not in qn:
+            if is_inside_image(cell, border_tuple) and img[cell[0], cell[1]] == 0 and cell not in done and cell not in qn:
               qn.append(cell)
               area += 1
 
