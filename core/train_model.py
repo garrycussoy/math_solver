@@ -13,11 +13,11 @@ import cv2
 import os
 
 # Import some parameters from other file
-from core.parameter import MODEL_HEIGHT
-from core.parameter import MODEL_WIDTH
-from core.parameter import SAVE_TO
-from core.parameter import BATCH_SIZE
-from core.parameter import EPOCHS
+from parameter import MODEL_HEIGHT
+from parameter import MODEL_WIDTH
+from parameter import SAVE_TO
+from parameter import BATCH_SIZE
+from parameter import EPOCHS
 
 # Define directories
 train_dir = "core/train_set/"

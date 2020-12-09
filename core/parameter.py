@@ -72,4 +72,4 @@ DISPLAY_QNA = True
 # 4. General
 # ----------------------------------------------------------
 # Set to true if you want to delete processed image saved in firebase
-DELETE_PROCESSED_IMAGE = True
+DELETE_PROCESSED_IMAGE = False
